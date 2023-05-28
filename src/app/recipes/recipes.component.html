@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-5">
+    <!-- event binding form child to parent-- coming from @output of recipe-list -->
+    <app-recipes-list
+      (recipeWasSelected)="onNewselectedRecipe($event)"
+    ></app-recipes-list>
+  </div>
+  <div class="col-md-7">
+    <!-- using data which is recieved from recipe-list using onReipeWasSelected fucntion -->
+    <app-recipes-detail
+      *ngIf="electedRecipe; else infoText"
+      [selectedNewrecipe]="electedRecipe"
+    ></app-recipes-detail>
+    <ng-template #infoText>Please select an Item</ng-template>
+  </div>
+</div>
